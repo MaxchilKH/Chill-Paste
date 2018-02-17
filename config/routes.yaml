@@ -1,0 +1,16 @@
+homepage:
+    path: /
+    controller: App\Controller\MainController::homepage
+
+sign_up:
+    path: /register
+    controller: App\Controller\AuthenticationController::signUpAction
+
+sign_in:
+    path: /login
+    controller: App\Controller\AuthenticationController::signInAction
+
+logout:
+    path: /logout
+    controller: null
+
