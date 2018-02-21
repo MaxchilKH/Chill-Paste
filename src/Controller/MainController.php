@@ -15,6 +15,13 @@ class MainController extends Controller
 {
     public function homepage(){
 
-        return new Response("Witam!");
+        return $this->render('homepage.html.twig');
+    }
+
+    public function dashboard(){
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+
+
+        return $this->render('Dashboard/dashboard.html.twig');
     }
 }

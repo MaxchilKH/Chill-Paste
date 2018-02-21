@@ -1,0 +1,20 @@
+{% import 'navigation.html.twig' as nav %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{ path('homepage') }}">Paste&Chill</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            {{ nav.navitem('Upload', path('upload')) }}
+        </ul>
+        {% if not app.user %}
+            <a class="btn btn-outline-dark mr-2" href="{{ path('sign_up') }}">Sign Up</a>
+            <a class="btn btn-outline-success mr-2" href="{{ path('sign_in') }}">Sign In</a>
+        {% else %}
+            <a class="mr-2" href="{{ path('dashboard') }}">{{ app.user.username }}</a>
+            <a class="btn btn-outline-dark mr-2" href="{{ path('logout') }}">Logout</a>
+        {% endif %}
+    </div>
+</nav>

@@ -1,7 +1,14 @@
-{% extends '../base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 
 {# Template dashbord #}
 {% block body %}
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+                {% include 'Dashboard/dashnav.html.twig' %}
+            </div>
+            <div class="col-8" id="result">Placeholder</div>
+        </div>
+    </div>
 {% endblock %}

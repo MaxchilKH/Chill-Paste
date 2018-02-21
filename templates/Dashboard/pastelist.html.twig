@@ -1,0 +1,10 @@
+<div class="flex-column">
+    {% for paste in pastes %}
+        <div class="d-flex">
+            <a class="mr-auto p-2" href="{{ path('display', {'paste_name': paste.filename }) }}">{{ paste.title }}</a>
+            <a class="p-2" href="#">addFav</a>
+            <a class="p-2" href="#">edit</a>
+            <a class="p-2" href="#">delete</a>
+        </div>
+    {% endfor %}
+</div>

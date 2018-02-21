@@ -2,6 +2,10 @@ homepage:
     path: /
     controller: App\Controller\MainController::homepage
 
+dashboard:
+    path: /dashboard
+    controller: App\Controller\MainController::dashboard
+
 sign_up:
     path: /register
     controller: App\Controller\AuthenticationController::signUpAction
@@ -14,3 +18,14 @@ logout:
     path: /logout
     controller: null
 
+upload:
+    path: /upload
+    controller: App\Controller\PastebinController::createPasteAction
+
+display:
+    path: /display/{paste_name}
+    controller: App\Controller\PastebinController::displayPasteAction
+
+ajax_get_pastes:
+    path: /dashboard/userpastes
+    controller: App\Controller\PastebinController::getUserPastes

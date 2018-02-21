@@ -8,7 +8,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\PastebinUser;
 use App\Form\SignInForm;
 use App\Form\SignUpForm;
@@ -20,6 +19,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AuthenticationController extends Controller
 {
     public function signUpAction(Request $request, UserPasswordEncoderInterface $encoder){
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY', $this->getUser()))
+            return $this->redirectToRoute('homepage');
 
         $form = $this->createForm(SignUpForm::class);
         $form->add('Register', SubmitType::class);

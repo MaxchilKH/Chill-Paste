@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 {% block body %}
-    <div id="form-container">
-        {% block form %}
-            {% include form_template %}
-        {% endblock %}
+    <div id="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-3">
+            {% block form %}
+                {% include form_template %}
+            {% endblock %}
+            </div>
+        </div>
     </div>
 {% endblock %}
