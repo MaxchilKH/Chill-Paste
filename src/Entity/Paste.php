@@ -39,7 +39,7 @@ class Paste
     private $author;
 
     /** @ORM\Column(type="string") */
-    private $file_name;
+    private $fileName;
 
     /** @ORM\Column(type="boolean") */
     private $visibility;
@@ -115,12 +115,12 @@ class Paste
 
     public function getFilename()
     {
-        return $this->file_name;
+        return $this->fileName;
     }
 
-    public function setFilename($file_name): void
+    public function setFilename($fileName): void
     {
-        $this->file_name = $file_name;
+        $this->fileName = $fileName;
     }
 
 

@@ -43,21 +43,20 @@ class PastebinController extends Controller
             $em->persist($paste);
             $em->flush();
 
-            return $this->redirectToRoute('display', array('paste_name' => $filename));
+            return $this->redirectToRoute('display', array('pasteName' => $filename));
         }
 
-        return $this->render('formdisplay.html.twig', array(
-            'form_template' => 'Forms/pasteform.html.twig',
+        return $this->render('Forms/pasteform.html.twig', array(
             'form' => $form->createView()
         ));
     }
 
-    public function displayPasteAction(Request $request, $paste_name){
+    public function displayPasteAction(Request $request, $pasteName){
 
         $paste = $this->getDoctrine()->getRepository(Paste::class)
-            ->findOneBy(array( 'file_name' => $paste_name));
+            ->findOneBy(array( 'file_name' => $pasteName));
 
-        $paste->setContent(file_get_contents($this->getPasteDir().$paste_name));
+        $paste->setContent(file_get_contents($this->getPasteDir().$pasteName));
 
         return $this->render('pastedisplay.html.twig', array(
             'paste' => $paste
@@ -71,6 +70,9 @@ class PastebinController extends Controller
     //************** AJAX CONTROLLER *****************//
 
     public function getUserPastes(Request $request){
+        if(!$request->isXmlHttpRequest())
+            return $this->redirectToRoute('homepage');
+
         if ($this->getUser()){
             $pastes = $this->getDoctrine()->getRepository(Paste::class)
                 ->findBy(array('author' => $this->getUser()));
@@ -81,6 +83,8 @@ class PastebinController extends Controller
         }
         return new Response();
     }
+
+
 
     //TODO: AJAX action for adding to favourite, deleting from fav, editing, and deleting paste
 }

@@ -23,7 +23,7 @@ upload:
     controller: App\Controller\PastebinController::createPasteAction
 
 display:
-    path: /display/{paste_name}
+    path: /display/{pasteName}
     controller: App\Controller\PastebinController::displayPasteAction
 
 ajax_get_pastes:

@@ -39,8 +39,7 @@ class AuthenticationController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('formdisplay.html.twig', array(
-            'form_template' => 'Forms/signupform.html.twig',
+        return $this->render('Forms/signupform.html.twig', array(
             'form' => $form->createView()
         ));
     }
@@ -55,8 +54,7 @@ class AuthenticationController extends Controller
 
         //Security takes over at this point
 
-        return $this->render('formdisplay.html.twig', array(
-            'form_template' => 'Forms/signinform.html.twig',
+        return $this->render('Forms/signinform.html.twig', array(
             'form' => $form->createView()
         ));
     }
@@ -64,8 +62,7 @@ class AuthenticationController extends Controller
     public function recoverAccountAction(Request $request){
         $form = $this->createForm(SignUpForm::class);
 
-        return $this->render('formdisplay.html.twig', array(
-            'form_template' => 'Forms/signupform.html.twig',
+        return $this->render('Forms/signupform.html.twig', array(
             'form' => $form->createView()
         ));
     }
